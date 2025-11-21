@@ -235,13 +235,11 @@ const admin = [
 ];
 export const setLocalStorage = () => {
   localStorage.setItem("employees", JSON.stringify(employees));
+  localStorage.setItem("admin", JSON.stringify(admin));
+
 };
 export const getLocalStorage = () => {
-  try {
-    const raw = localStorage.getItem("employees");
-    return raw ? JSON.parse(raw) : employees;
-  } catch (err) {
-    console.error("Failed to read employees from localStorage", err);
-    return employees;
-  }
+    const raw = JSON.parse(localStorage.getItem('employees'));
+    const adminRaw = JSON.parse(localStorage.getItem('admin'));
+    return {employess: raw, admin: adminRaw }
 };

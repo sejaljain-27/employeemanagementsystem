@@ -4,27 +4,48 @@ import EmployeeDashboard from "./components/Auth/Dashboard/EmployeeDashboard.jsx
 import AdminDashboard from "./components/Auth/Dashboard/AdminDashboard.jsx";
 import { AuthContext } from "./context/AuthProvider.jsx";
 
-
-
 const App = () => {
   const [user, setUser] = useState(null);
-    const authdata=useContext(AuthContext)
- 
+  const [loggedInUserData, setLoggedInUserData] = useState(null);
+  //  const [userData,SetUserData] = useContext(AuthContext)
+  const authdata = useContext(AuthContext);
+
+  //  const [userData,SetUserData] = useContext(AuthContext)
+
   const handleLogin = (email, password) => {
-    if (email === 'admin@me.com' && password === '123') {
-      setUser('admin');
-    } else if (authdata && authdata.employess.find((e) => e.email === email && e.password === password)) {
-      setUser('employee');
-    } else {
-      alert("Invalid credentials");
+    // First check admin list from authdata
+    const adminMatch = authdata?.admin?.find(
+      (a) => a.email === email && a.password === password
+    );
+    if (adminMatch) {
+      setUser("admin");
+      localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
+      return;
     }
+    const employee = authdata?.employees?.find(
+      (e) => e.email === email && e.password === password
+    );
+    if (employee) {
+      setUser("employee");
+      setLoggedInUserData(employee);
+      localStorage.setItem(
+        "loggedInUser",
+        JSON.stringify({ role: "employee", data: employee })
+      );
+      return;
+    }
+
+    alert("Invalid Credentials or auth data not loaded yet.");
   };
 
   return (
     <>
-      {!user ? <Login handleLogin={handleLogin} /> : ''}
-      {user === 'employee' ? <EmployeeDashboard /> : ''}
-      {user === 'admin' ? <AdminDashboard /> : ''}
+      {!user ? <Login handleLogin={handleLogin} /> : ""}
+      {user == "admin" ? (
+        <AdminDashboard />
+      ) : user == "employee" ? (
+        <EmployeeDashboard data={loggedInUserData} />
+      ) : null}
     </>
   );
 };

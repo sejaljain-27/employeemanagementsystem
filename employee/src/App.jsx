@@ -9,8 +9,16 @@ const App = () => {
   const [loggedInUserData, setLoggedInUserData] = useState(null);
   //  const [userData,SetUserData] = useContext(AuthContext)
   const authdata = useContext(AuthContext);
+  useEffect(()=>{
+    const loggedInUser = localStorage.getItem("loggedInUser")
+    if(loggedInUser){
+      const userData=JSON.parse(loggedInUser)
+      setUser(userData.role)
+      setLoggedInUserData(userData.data)  
+    }
+  },[])
 
-  //  const [userData,SetUserData] = useContext(AuthContext)
+  
 
   const handleLogin = (email, password) => {
     // First check admin list from authdata

@@ -8,8 +8,10 @@ function Header(props) {
     "User";
 
   const logOutUser = () => {
-    localStorage.setItem("loggedInUser", "");
-    props.changeUser("");
+    localStorage.removeItem("loggedInUser");
+    if (typeof props.changeUser === "function") {
+      props.changeUser(null);
+    }
   };
 
   return (

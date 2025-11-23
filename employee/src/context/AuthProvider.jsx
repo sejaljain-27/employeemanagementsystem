@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
+
 import { getLocalStorage, setLocalStorage } from "../utils/localStorage";
 
 export const AuthContext = React.createContext();
@@ -9,16 +10,15 @@ const AuthProvider = ({ children }) => {
   const [userData, setUserData] = React.useState(null);
 
   useEffect(() => {
-   
-      setLocalStorage();
-    
-
-    const { employees, admin } = getLocalStorage();
-    setUserData({ employees, admin });
+    // Load both employees and admin from localStorage (getLocalStorage will seed only if missing)
+    const authObj = getLocalStorage();
+    setUserData(authObj);
   }, []);
 
   return (
-    <AuthContext.Provider value={userData}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={[userData, setUserData]}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

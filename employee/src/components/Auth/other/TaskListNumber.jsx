@@ -14,22 +14,35 @@ function TaskListNumber({ data }) {
   };
 
   return (
-    <div className="flex mt-10 justify-between gap-5 screen ">
-      <div className=" rounded-xl px-9 py-6 w-[45%] bg-blue-400 ">
-        <h2 className="text-2xl font-semibold">{derived.newTask}</h2>
-        <h3 className="text-xl font-medium">New Task</h3>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+      <div className="rounded-xl px-6 py-4 bg-blue-400 flex flex-col items-start sm:items-center">
+        <h2 className="text-xl md:text-2xl font-semibold">{derived.newTask}</h2>
+        <h3 className="text-sm md:text-xl font-medium text-white/90 mt-1">
+          New Task
+        </h3>
       </div>
-      <div className=" rounded-xl px-9 py-6 w-[45%] bg-green-400 ">
-        <h2 className="text-2xl font-semibold">{derived.completed}</h2>
-        <h3 className="text-xl font-medium">Completed Task</h3>
+
+      <div className="rounded-xl px-6 py-4 bg-green-400 flex flex-col items-start sm:items-center">
+        <h2 className="text-xl md:text-2xl font-semibold">
+          {derived.completed}
+        </h2>
+        <h3 className="text-sm md:text-xl font-medium text-white/90 mt-1">
+          Completed
+        </h3>
       </div>
-      <div className=" rounded-xl px-9 py-6 w-[45%] bg-yellow-400 ">
-        <h2 className="text-2xl font-semibold">{derived.active}</h2>
-        <h3 className="text-xl font-medium">Accepted Task</h3>
+
+      <div className="rounded-xl px-6 py-4 bg-yellow-400 flex flex-col items-start sm:items-center">
+        <h2 className="text-xl md:text-2xl font-semibold">{derived.active}</h2>
+        <h3 className="text-sm md:text-xl font-medium text-white/90 mt-1">
+          Accepted
+        </h3>
       </div>
-      <div className=" rounded-xl px-9 py-6 w-[45%] bg-red-400 ">
-        <h2 className="text-2xl font-semibold">{derived.failed}</h2>
-        <h3 className="text-xl font-medium">Failed Task</h3>
+
+      <div className="rounded-xl px-6 py-4 bg-red-400 flex flex-col items-start sm:items-center">
+        <h2 className="text-xl md:text-2xl font-semibold">{derived.failed}</h2>
+        <h3 className="text-sm md:text-xl font-medium text-white/90 mt-1">
+          Failed
+        </h3>
       </div>
     </div>
   );

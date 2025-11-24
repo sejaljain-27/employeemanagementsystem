@@ -28,8 +28,8 @@ function EmployeeDashboard(props) {
   }
 
   return (
-    <div>
-      <div className="p-10 bg-[#1c1c1c] h-screen">
+    <div className="min-h-screen w-full p-4 md:p-10 bg-[#1c1c1c]">
+      <div className="max-w-5xl mx-auto w-full">
         <Header changeUser={props.changeUser} data={currentData} />
         <TaskListNumber data={currentData} />
         <TaskList data={currentData} />

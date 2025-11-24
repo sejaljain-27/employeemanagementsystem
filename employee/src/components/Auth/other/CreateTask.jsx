@@ -74,10 +74,10 @@ function CreateTask() {
     <div className="mt-10 w-full">
       <form
         onSubmit={submitHandler}
-        className="flex flex-wrap gap-10 w-full p-8 bg-[#111111] rounded-2xl border border-[#2a2a2a]"
+        className="flex flex-wrap gap-6 w-full p-6 md:p-8 bg-[#111111] rounded-2xl border border-[#2a2a2a]"
       >
         {/* LEFT SIDE */}
-        <div className="w-full lg:w-1/2 flex flex-col gap-6">
+        <div className="w-full md:w-1/2 flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <h3 className="text-lg font-medium">Task Title</h3>
             <input
@@ -131,7 +131,7 @@ function CreateTask() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="w-full lg:w-1/3 flex flex-col gap-4">
+        <div className="w-full md:w-1/3 flex flex-col gap-4">
           <h3 className="text-lg font-medium">Description</h3>
 
           <textarea
@@ -149,7 +149,7 @@ function CreateTask() {
         <div className="w-full flex justify-end">
           <button
             type="submit"
-            className="bg-green-500 hover:bg-green-600 text-black font-semibold px-10 py-3 rounded-xl transition-all"
+            className="bg-green-500 hover:bg-green-600 text-black font-semibold px-6 md:px-10 py-3 rounded-xl transition-all w-full md:w-auto"
           >
             Create Task
           </button>

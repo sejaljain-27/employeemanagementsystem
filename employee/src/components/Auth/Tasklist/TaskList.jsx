@@ -51,7 +51,7 @@ function TaskList({ data }) {
   return (
     <div
       id="tasklist"
-      className="h-auto overflow-x-auto flex items-center justify-start gap-5 whitespace-nowrap w-full py-5 mt-10"
+      className="h-auto flex flex-col md:flex-row md:overflow-x-auto items-start md:items-center justify-start gap-5 whitespace-normal md:whitespace-nowrap w-full py-5 mt-10"
     >
       {tasks.map((elem, idx) => {
         if (elem?.active)
